@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Hanxiao Deng</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #0d0d0d;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+    }
+
+    nav .menu {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 300;
+      font-size: 0.9rem;
+    }
+
+    h1{
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .symposium-link {
+      background: linear-gradient(90deg, #ffffff, #ff7a85, #ffffff);
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientMove 3s linear infinite;
+      font-weight: 700;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+    }
+
+    form {
+      max-width: 500px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 80px; /* keeps spacing above footer */
+    }
+
+    input, select, textarea {
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    button {
+      padding: 12px;
+      background: #ff4d5a;
+      border: none;
+      color: #fff;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+
+    footer {
+      padding: 30px 15px;
+      text-align: center;
+      background: #000;
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+
+    /* FLEX LAYOUT FIX */
+    main {
+      flex: 1;
+      padding-top: 120px;
+    }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .menu {
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background: #111;
+      flex-direction: column;
+      width: 200px;
+      padding: 20px;
+      display: none;
+    }
+
+    .menu.active {
+      display: flex;
+    }
+
+    .menu-toggle {
+      display: block;
+    }
+  }
+
+  </style>
+  </head>
+
+  <body>
+
+    <nav>
+      <div>
+        <a href="index.html"><strong>Hanxiao Deng</strong></a>
+      </div>
+
+      <div class="menu" id="menu">
+        <a href="index.html">Home</a>
+        <a href="index.html#music">Music</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact">Connect</a>
+        <a href="symposium.html" target="_blank" class="symposium-link">Symposium</a>
+      </div>
+
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    </nav>
+
+    <main>
+
+      <h1 style="text-align:center;">Contact</h1>
+
+      <form action="https://formspree.io/f/xpqonnpj" method="POST">
+
+        <input type="text" name="name" placeholder="Your Name" required>
+
+        <input type="email" name="email" placeholder="Your Email" required>
+
+        <select name="reason" required>
+          <option value="">Reason for Contact</option>
+          <option>Sponsor Symposium</option>
+          <option>Participate in Symposium</option>
+          <option>Lessons with Hanxiao</option>
+          <option>Mailing List Signup</option>
+          <option>Booking / Performance Inquiry</option>
+          <option>Collaboration</option>
+          <option>Press / Media</option>
+          <option>Other...</option>
+        </select>
+
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+
+    </main>
+
+    <footer>
+      <p>© 2026 Hanxiao Deng. All Rights Reserved.</p>
+    </footer>
+    <script>
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("active");
+    }
+  </script>
+  </body>
+</html>

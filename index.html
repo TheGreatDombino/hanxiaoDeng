@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hanxiao Deng | Official Website</title>
+
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- icons (if using Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+      /* Blanket Styling */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: #0d0d0d;
+        color: #fff;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+      }
+
+      /* NavBar Styling*/
+      nav .menu {
+        display: flex;
+        gap: 20px;
+      }
+
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 300;
+        font-size: 0.9rem;
+      }
+
+      .menu-toggle {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      /* HERO SECTION */
+      header {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        overflow: hidden;
+      }
+
+      /* VIDEO BACKGROUND */
+      .hero-video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+
+        transform: translate(-50%, -50%);
+        z-index: -2;
+      }
+
+      /* DARK OVERLAY */
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          rgba(0, 0, 0, 0.65),
+          rgba(0, 0, 0, 0.85)
+        );
+        z-index: -1;
+      }
+
+      header h1 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+      }
+
+      .btn {
+        padding: 12px 25px;
+        background: #ff4d5a;
+        border: none;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: 0.3s;
+        font-size: 0.9rem;
+      }
+
+      .btn:hover {
+        background: #ff1f3a;
+      }
+
+      .symposium-link {
+        background: linear-gradient(90deg, #ffffff, #ff7a85, #ffffff);
+        background-size: 200% 100%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradientMove 3s linear infinite;
+        font-weight: 700;
+      }
+
+      @keyframes gradientMove {
+        0% {
+          background-position: 0% 50%;
+        }
+
+        100% {
+          background-position: 200% 50%;
+        }
+      }
+
+      section {
+        padding: 60px 20px;
+        text-align: center;
+      }
+
+      h2 {
+        font-size: clamp(1.5rem, 4vw, 2.2rem);
+      }
+
+      /* ABOUT SECTION */
+      #about {
+        padding: 100px 20px;
+      }
+
+      /* BIO PANEL */
+      .bio-container {
+        max-width: 950px;
+        margin: 50px auto 0;
+        background: linear-gradient(145deg, #1a1a1a, #111);
+        border: 1px solid rgba(255,255,255,0.08);
+        color: #fff;
+        border-radius: 28px;
+        padding: 60px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+        text-align: left;
+      }
+
+      /* BIO TEXT */
+      .bio-block {
+        line-height: 1.85;
+        font-size: 1.05rem;
+        font-weight: 400;
+        letter-spacing: 0.01em;
+        color: rgba(255,255,255,0.82);
+      }
+
+      .bio-block p {
+        margin-bottom: 30px;
+      }
+
+      /* DIVIDER */
+      .bio-divider {
+        width: 100%;
+        height: 1px;
+        background: rgba(255,255,255,0.08);
+        margin: 55px 0;
+      }
+
+      /* CHINESE BIO */
+      .chinese-bio {
+        font-size: 1.08rem;
+        line-height: 2;
+        font-weight: 450;
+      }
+      /* LISTEN NOW */
+      .music {
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .music-text {
+        margin-top: 15px;
+        opacity: 0.75;
+        font-size: 1rem;
+      }
+      /* YOUTUBE CHANNEL */
+      .youtube-card {
+        margin: 40px auto 0;
+        max-width: 700px;
+        background: linear-gradient(145deg, #1c1c1c, #111);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 24px;
+        padding: 30px;
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        text-decoration: none;
+        color: white;
+        transition: 0.35s ease;
+      }
+
+      .youtube-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(255,255,255,0.18);
+        background: linear-gradient(145deg, #232323, #151515);
+      }
+
+      .youtube-info h3 {
+        font-size: 1.4rem;
+        margin-bottom: 8px;
+      }
+
+      .youtube-info p {
+        opacity: 0.7;
+      }
+
+      .youtube-logo {
+        margin-left: auto;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: #ff0000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        font-weight: bold;
+        flex-shrink: 0;
+        transition: 0.3s ease;
+      }
+
+      .youtube-card:hover .youtube-logo {
+        transform: scale(1.08);
+      }
+      /* CONNECT SECTION */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-top: 40px;
+      }
+
+      #contact {
+        padding: 80px 20px;
+        text-align: center;
+      }
+
+      #contact .grid {
+        max-width: 1200px;
+        margin: 45px auto 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+      }
+
+      /* SOCIAL CARDS */
+      .social-card {
+        background: #141414;
+        border-radius: 22px;
+        padding: 26px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        text-decoration: none;
+        color: white;
+        border: 1px solid rgba(255,255,255,0.08);
+        transition: 0.3s ease;
+      }
+
+      /* LEFT SIDE */
+      .social-main {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      /* QR CODE */
+      .qr-code {
+        position: absolute;
+        left: 50%;
+        bottom: 100%;
+        transform: translate(-50%, -12px) scale(0.95);
+        opacity: 0;
+        background: white;
+        padding: 12px;
+        border-radius: 18px;
+        box-shadow: 0 12px 35px rgba(0,0,0,0.35);
+        z-index: 999;
+        transition: 0.25s ease;
+      }
+
+      .qr-code img {
+        width: 140px;
+        height: 140px;
+        display: block;
+        border-radius: 12px;
+        background: white;
+        padding: 6px;
+      }
+
+      .qr-code::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        width: 16px;
+        height: 16px;
+        background: white;
+        transform: translateX(-50%) rotate(45deg);
+      }
+
+      .instagram-card {
+        position: relative;
+        overflow: visible;
+      }
+
+      /* HOVER */
+      .instagram-card:hover .qr-code {
+        opacity: 1;
+        transform: translate(-50%, -18px) scale(1);
+      }
+
+      .social-card:hover {
+        transform: translateY(-6px);
+        background: #1b1b1b;
+        border-color: rgba(255,255,255,0.18);
+      }
+
+      /* ICON WRAPPER */
+      .social-icon {
+        width: 62px;
+        height: 62px;
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        background: white;
+      }
+
+      /* ICON IMAGES */
+      .social-icon img {
+        width: 34px;
+        height: 34px;
+        object-fit: contain;
+      }
+
+      /* TEXT */
+      .social-text {
+        text-align: center;
+      }
+
+      .social-text h3 {
+        margin-bottom: 6px;
+        font-size: 1.1rem;
+      }
+
+      .social-text p {
+        opacity: 0.7;
+        font-size: 0.95rem;
+      }
+      /* Contact us Icon */
+      .contact-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 62px;
+        height: 62px;
+        border-radius: 18px;
+        background: white;
+      }
+
+      .contact-icon i {
+        font-size: 1.6rem;
+        color: #111;
+      }
+
+      .contact-card {
+        background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+        border: 1px solid rgba(255,255,255,0.2);
+      }
+
+      .contact-card:hover {
+        background: linear-gradient(145deg, #222, #111);
+        border-color: rgba(255,255,255,0.35);
+      }
+
+      footer {
+        padding: 30px 15px;
+        text-align: center;
+        background: #000;
+        font-size: 0.8rem;
+        opacity: 0.7;
+      }
+
+      /* MOBILE STYLES */
+      @media (max-width: 768px) {
+        .menu {
+          position: absolute;
+          top: 60px;
+          right: 0;
+          background: #111;
+          flex-direction: column;
+          width: 200px;
+          padding: 20px;
+          display: none;
+        }
+
+          .youtube-card {
+            flex-direction: column;
+            text-align: center;
+            padding: 25px;
+          }
+
+        .menu.active {
+          display: flex;
+        }
+
+        .menu-toggle {
+          display: block;
+        }
+
+        .bio-container {
+          padding: 35px 28px;
+          border-radius: 22px;
+        }
+
+        .bio-block {
+          font-size: 0.96rem;
+          line-height: 1.85;
+        }
+
+        .chinese-bio {
+          line-height: 1.9;
+        }
+
+        #contact .grid {
+          grid-template-columns: 1fr;
+        }
+
+        /* FORCE ALL CARDS TO BE SAME STRUCTURE */
+        .social-card {
+          min-height: 110px;
+        }
+
+        .social-main {
+          justify-content: center;
+          gap: 18px;
+          width: 100%;
+        }
+
+        .social-text {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          text-align: left;
+        }
+
+        .social-text h3 {
+          font-size: 1rem;
+        }
+
+        .social-text p {
+          font-size: 0.85rem;
+        }
+
+        /* ICON ALWAYS SAME SIZE */
+        .social-icon {
+          width: 52px;
+          height: 52px;
+        }
+
+        /* QR SHOULD NOT BREAK LAYOUT ON MOBILE */
+        .qr-code {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <div>
+        <a href="index.html"><strong>Hanxiao Deng</strong></a>
+      </div>
+
+      <div class="menu" id="menu">
+        <a href="#music">Music</a>
+        <a href="#about">Bio</a>
+        <a href="#contact">Connect</a>
+        <a href="symposium.html" target="_blank" class="symposium-link">Symposium</a>
+      </div>
+
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    </nav>
+
+    <!-- HERO -->
+    <header>
+
+      <!-- VIDEO -->
+      <video autoplay muted loop playsinline class="hero-video">
+        <source src="videos/HanxiaoHeader.mp4" type="video/mp4"/>
+      </video>
+
+      <!-- OVERLAY -->
+      <div class="hero-overlay"></div>
+
+      <!-- LISTEN NOW BANNER TEXT & BUTTON -->
+      <h1>Hanxiao Deng</h1>
+      <a href="#music" class="btn">Listen Now</a>
+    </header>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2>Bio / 个人简介</h2>
+
+      <div class="bio-container">
+
+        <!-- ENGLISH -->
+        <div class="bio-block">
+
+          <p>
+            Hanxiao Deng is a double bassist based in the United States. She graduated from the Curtis Institute of Music in Philadelphia, where she majored in double bass performance and also trained in piano. She previously studied at the Manhattan School of Music and the Middle School affiliated with the Shanghai Conservatory of Music, and has worked with distinguished teachers including Harold Robinson, Edgar Meyer, and Nathaniel West.
+          </p>
+
+          <p>
+            She has performed with a range of professional ensembles, including the Chamber Orchestra of Philadelphia, the Baltimore Symphony Orchestra, the Philadelphia Ballet Orchestra, and the National Repertory Orchestra. Her solo and chamber music performances have taken place at the Curtis Institute of Music, the Manhattan School of Music, and in concerts both in the United States and China.
+          </p>
+
+          <p>
+            Following her graduation, Ms. Deng has continued to work at the Curtis Institute of Music. She also teaches double bass and piano to both adult and youth students.
+          </p>
+
+          <p>
+            She is the founder and director of the Symposium for Women Bassists, the first international symposium dedicated to women bassists, which has developed into an international professional platform dedicated to connecting performers, educators, and students, and fostering artistic exchange, mentorship, and professional development.
+          </p>
+
+        </div>
+
+        <!-- DIVIDER -->
+        <div class="bio-divider"></div>
+
+        <!-- CHINESE -->
+        <div class="bio-block chinese-bio">
+
+          <p>
+            邓含笑是一位旅美低音提琴演奏家，毕业于费城柯蒂斯音乐学院，
+            主修低音提琴，并兼修钢琴。
+            她曾就读于纽约曼哈顿音乐学院及上海音乐学院附属中学，
+            师从 Harold Robinson、Edgar Meyer、Nathaniel West
+            等多位知名音乐家。
+          </p>
+
+          <p>
+            她曾与费城室内管弦乐团、巴尔的摩交响乐团、
+            费城芭蕾舞团、国家剧目交响乐团等多家专业乐团合作演出，
+            并在柯蒂斯音乐学院、曼哈顿音乐学院及国内外多场音乐会中举办独奏与室内乐演出。
+          </p>
+
+          <p>
+            毕业后，邓含笑留在费城柯蒂斯音乐学院工作，
+            同时指导青少年及成年学生学习低音提琴与钢琴。
+          </p>
+
+          <p>
+            她创办并主持女性低音提琴演奏家研讨会，
+            这是首个面向国际的女性低音提琴演奏家研讨会，
+            并已发展成为一个面向国际的专业平台，
+            致力于连接演奏家、教育者与学生，
+            促进艺术交流、指导与职业发展。
+          </p>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- MUSIC -->
+    <section id="music" class="music">
+      <h2>Watch on YouTube</h2>
+
+      <p class="music-text">
+        Live performances, official releases, behind-the-scenes content, and new videos uploaded regularly.
+      </p>
+
+      <a href="https://www.youtube.com/@hanxiaodeng646" target="_blank" class="youtube-card">
+
+        <img src="photos/hanxiaoThumb.png" alt="Hanxiao Deng" class="youtube-image"/>
+
+        <div class="youtube-info">
+          <h3>Hanxiao Deng Official</h3>
+          <p>Visit the YouTube Channel</p>
+        </div>
+
+        <!-- YOUTUBE LOGO -->
+        <div class="youtube-logo">
+          ▶
+        </div>
+      </a>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>Connect</h2>
+
+      <div class="grid">
+
+        <!-- INSTAGRAM -->
+        <a href="https://www.instagram.com/hanxiao_deng/" target="_blank" class="social-card instagram-card">
+
+          <!-- LEFT CONTENT -->
+          <div class="social-main">
+
+            <div class="social-icon instagram-icon">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"/>
+            </div>
+
+            <div class="social-text">
+              <h3>Instagram</h3>
+              <p>@hanxiao_deng</p>
+            </div>
+
+          </div>
+
+          <!-- QR CODE -->
+          <div class="qr-code">
+            <img src="photos/instaQR.jpg" alt="Instagram QR Code"/>
+          </div>
+        </a>
+
+        <!-- YOUTUBE -->
+        <a href="https://www.youtube.com/@hanxiaodeng646" target="_blank" class="social-card">
+          <div class="social-main">
+            <div class="social-icon">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube"/>
+            </div>
+
+            <div class="social-text">
+              <h3>YouTube</h3>
+              <p>@hanxiaodeng646</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="contact.html" class="social-card contact-card">
+
+          <div class="social-main">
+
+            <div class="social-icon contact-icon">
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+
+            <div class="social-text">
+              <h3>Contact</h3>
+              <p>Email / Booking</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>© 2026 Hanxiao Deng. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+      function toggleMenu() {
+        document.getElementById("menu").classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>

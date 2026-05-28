@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 Symposium | Hanxiao Deng</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+    :root{
+      --bg:#0d0d0d;
+      --card:#171717;
+      --card2:#1c1c1c;
+      --text:#ffffff;
+      --muted:rgba(255,255,255,0.7);
+      --accent:#ff7a85;
+      --accent2:#c7a6ff;
+      --gold:#f5d08a;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+
+    /* NAV */
+    nav{
+      position:fixed;
+      top:0;
+      width:100%;
+      padding:15px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:rgba(0,0,0,0.6);
+      backdrop-filter:blur(10px);
+      z-index:1000;
+    }
+
+    nav .menu{
+      display:flex;
+      gap:20px;
+    }
+
+    nav a{
+      color:#fff;
+      text-decoration:none;
+      font-weight:300;
+      font-size:0.9rem;
+    }
+
+    .symposium-link{
+      background:linear-gradient(90deg,#fff,var(--accent),#fff);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      font-weight:700;
+    }
+
+    /* LAYOUT */
+    section{
+      padding:80px 20px;
+      max-width:1000px;
+      margin:auto;
+    }
+
+    h1,h2{
+      text-align:center;
+      margin-bottom:10px;
+    }
+
+    h2{
+      position:relative;
+      padding-bottom:12px;
+    }
+
+    /* subtle line under ALL section headers */
+    h2::after{
+      content:"";
+      display:block;
+      width:60px;
+      height:2px;
+      margin:10px auto 0;
+      background:linear-gradient(90deg,var(--accent),var(--gold),var(--accent2));
+      border-radius:999px;
+      opacity:0.8;
+    }
+
+    p{
+      color:var(--muted);
+    }
+
+    .mt-20{
+      margin-top: 20px;
+    }
+
+    footer {
+      padding: 30px 15px;
+      text-align: center;
+      background: #000;
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+
+    /* HERO TITLE */
+    .hero-title{
+      width:100%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      font-size:clamp(1.4rem, 3vw, 2.4rem);
+      font-weight:600;
+      line-height:1.2;
+    }
+
+    .hero-title span{
+      display:inline-block;
+      background:linear-gradient(90deg,#fff,var(--accent),#fff);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      white-space:nowrap;
+    }
+
+    @media(max-width:600px){
+      .hero-title span{
+        white-space:normal;
+        font-size:1.2rem;
+      }
+    }
+
+    .hero-subtitle{
+      text-align:center;
+      max-width:700px;
+      margin:10px auto 0;
+      line-height:1.6;
+    }
+
+    /* CARD */
+    .card{
+      background:linear-gradient(145deg,var(--card),var(--card2));
+      border:1px solid rgba(255,255,255,0.08);
+      padding:24px;
+      border-radius:18px;
+      text-align:center;
+      transition:0.3s ease;
+    }
+
+    /* BUTTON */
+    a.btn{
+      display:inline-block;
+      margin-top:15px;
+      padding:10px 20px;
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      color:#fff;
+      text-decoration:none;
+      border-radius:25px;
+      font-weight:500;
+      transition:0.3s;
+    }
+
+    a.btn:hover{
+      transform:scale(1.03);
+      opacity:0.9;
+    }
+
+    /* DIVIDER */
+    .divider{
+      width:80px;
+      height:2px;
+      margin:15px auto 0;
+      background:linear-gradient(90deg,var(--accent),var(--gold),var(--accent2));
+      border-radius:999px;
+    }
+
+    .zoom-indicator{
+      position:absolute;
+      bottom:10px;
+      right:10px;
+      width:32px;
+      height:32px;
+      border-radius:50%;
+      background:rgba(0,0,0,0.65);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:13px;
+      color:#fff;
+      opacity:0.9;
+    }
+
+    /* HERO IMAGE */
+    .hero-image{
+      width:100%;
+      display:flex;
+      justify-content:center;
+      margin:20px 0 10px;
+    }
+
+    .hero-image img{
+      width:min(650px, 92vw);
+      height:auto;
+      border-radius:14px;
+      box-shadow:0 20px 60px rgba(0,0,0,0.5);
+      object-fit:contain;
+    }
+
+    /* HIGHLIGHTS CAROUSEL */
+    .carousel{
+      position:relative;
+      overflow:hidden;
+      border-radius:14px;
+      height:520px;
+      margin-bottom:14px;
+      background:#111;
+    }
+
+    .carousel-track{
+      display:flex;
+      transition:transform 0.6s ease;
+      height:100%;
+    }
+
+    .slide{
+      position:relative;
+      min-width:100%;
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#111;
+    }
+
+    .slide img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      object-position:center;
+      display:block;
+    }
+
+    /* mobile sizing */
+    @media(max-width:700px){
+      .carousel{
+        height:340px;
+      }
+    }
+
+
+    /* THUMBNAIL NAVIGATION */
+    .dots{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:6px;
+      margin-top:12px;
+      flex-wrap:nowrap;
+      overflow-x:auto;
+      overflow-y:hidden;
+      padding-bottom:4px;
+      scrollbar-width:none;
+    }
+
+    .dots::-webkit-scrollbar{
+      display:none;
+    }
+
+    .dot{
+      width:48px;
+      height:48px;
+      flex:0 0 auto;
+      border-radius:8px;
+      overflow:hidden;
+      border:2px solid transparent;
+      cursor:pointer;
+      opacity:0.6;
+      transition:0.25s ease;
+    }
+
+    .dot img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .dot:hover{
+      opacity:1;
+      transform:scale(1.05);
+    }
+
+    .dot.active{
+      border-color:var(--accent);
+      opacity:1;
+    }
+
+    /* LIGHTBOX */
+    .lightbox{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.92);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      opacity:0;
+      pointer-events:none;
+      transition:0.3s ease;
+      z-index:5000;
+    }
+
+    .lightbox.active{
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .lightbox img{
+      max-width:92vw;
+      max-height:88vh;
+      object-fit:contain;
+      border-radius:12px;
+    }
+
+    .lightbox-close{
+      position:absolute;
+      top:20px;
+      right:25px;
+      font-size:2rem;
+      color:#fff;
+      cursor:pointer;
+    }
+
+    .lightbox-arrow{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      width:58px;
+      height:58px;
+      border-radius:50%;
+      background:rgba(255,255,255,0.12);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      font-size:1.5rem;
+      color:#fff;
+      transition:0.25s ease;
+    }
+
+    .lightbox-arrow:hover{
+      background:rgba(255,255,255,0.22);
+    }
+
+    .lightbox-prev{
+      left:20px;
+    }
+
+    .lightbox-next{
+      right:20px;
+    }
+
+    /* TESTIMONIAL VIDEO */
+    .testimonial-video{
+      width:100%;
+      display:flex;
+      justify-content:center;
+    }
+
+    .testimonial-video video{
+      width:100%;
+      max-width:340px;
+      border-radius:14px;
+      overflow:hidden;
+      background:#000;
+      box-shadow:0 20px 60px rgba(0,0,0,0.45);
+    }
+
+
+    /* GLOBAL SLIDESHOW MAGNIFY ICON */
+    .slide::after{
+      content:"\f002";
+      font-family:"Font Awesome 6 Free";
+      font-weight:900;
+      position:absolute;
+      bottom:12px;
+      right:12px;
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      background:rgba(0,0,0,0.65);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      font-size:13px;
+      opacity:0.9;
+      pointer-events:none;
+    }
+
+    /* PRESS RELEASE THUMBNAIL */
+    .press-thumbnail{
+      width:100%;
+      max-width:320px;
+      margin:22px auto 0;
+      position:relative;
+      cursor:pointer;
+      border-radius:14px;
+      overflow:hidden;
+      background:#111;
+      transition:0.25s ease;
+      border:1px solid rgba(255,255,255,0.1);
+    }
+
+    .press-thumbnail:hover{
+      transform:scale(1.02);
+      box-shadow:0 20px 50px rgba(0,0,0,0.45);
+    }
+
+    .press-thumbnail img{
+      width:92%;
+      display:block;
+      margin:18px auto;
+      border-radius:10px;
+    }
+
+    </style>
+  </head>
+
+  <body>
+
+    <nav>
+      <div>
+        <a href="index.html"><strong>Hanxiao Deng</strong></a>
+      </div>
+      <div class="menu">
+        <a href="index.html">Home</a>
+        <a href="index.html#contact">Connect</a>
+        <a href="symposium.html" class="symposium-link">Symposium</a>
+      </div>
+    </nav>
+
+    <section style="padding-top:120px;">
+
+      <h1 class="hero-title">
+        <span>2026 Symposium for Women and Non-Binary Bassists</span>
+      </h1>
+
+      <div class="divider"></div>
+
+      <p class="hero-subtitle">
+        An international gathering of women and non-binary bassists focused on performance, mentorship, and artistic exchange.
+      </p>
+
+    </section>
+
+
+    <div class="hero-image">
+      <img src="photos/2026_Symposium_Flyer.jpg" alt="2026 Symposium Flyer">
+
+    </div>
+
+    <!-- PROGRAM (UNCHANGED) -->
+    <section>
+
+      <h2>Program Overview</h2>
+
+      <div class="card mt-20">
+        <p>The 2026 Symposium is a four-day immersive experience bringing together musicians from around the world.</p>
+      </div>
+
+      <!-- PROGRAM OVERVIEW SLIDESHOW -->
+      <div class="card mt-20">
+
+        <h3 id="programTitle">Symposium Schedule - 2026</h3>
+        <br>
+        <div class="carousel" data-carousel="2">
+
+          <div class="carousel-track">
+
+            <div class="slide">
+              <img src="photos/cover_schedule.jpg">
+            </div>
+
+            <div class="slide">
+              <img src="photos/Thursday_Symposium.jpg">
+            </div>
+
+            <div class="slide">
+              <img src="photos/Friday_Symposium.jpg">
+            </div>
+
+            <div class="slide">
+              <img src="photos/Saturday_Symposium.jpg">
+            </div>
+
+            <div class="slide">
+              <img src="photos/Sunday_Symposium.jpg">
+            </div>
+          </div>
+        </div>
+
+        <div class="dots" data-dots="2"></div>
+
+      </div>
+
+    </section>
+
+<!-- UPDATED HIGHLIGHTS -->
+  <section>
+    <h2>Symposium Archives</h2>
+    <br>
+    <h2>2025 Symposium</h2>
+
+    <!-- Album 1 -->
+    <div class="card">
+
+      <div class="carousel" data-carousel="0">
+        <div class="carousel-track">
+          <div class="slide"><img src="2025_album/2025_flyer.PNG"></div>
+          <div class="slide"><img src="2025_album/2025_1.jpeg"></div>
+          <div class="slide"><img src="2025_album/2025_2.jpeg"></div>
+          <div class="slide"><img src="2025_album/2025_3.jpg"></div>
+          <div class="slide"><img src="2025_album/2025_4.jpg"></div>
+          <div class="slide"><img src="2025_album/2025_5.jpg"></div>
+          <div class="slide"><img src="2025_album/2025_6.jpg"></div>
+          <div class="slide"><img src="2025_album/2025_7.jpg"></div>
+          <div class="slide"><img src="2025_album/2025_8.jpg"></div>
+          <div class="slide"><img src="2025_album/2025_9.jpg"></div>
+          <div class="slide"><img src="2025_album/2025_10.jpg"></div>
+          <div class="slide"><img src="2025_album/2025_11.jpg"></div>
+          <div class="slide"><img src="2025_album/2025_12.jpg"></div>
+          <div class="slide"><img src="2025_album/2025_13.jpg"></div>
+          <div class="slide"><img src="2025_album/2025_14.jpg"></div>
+          <div class="slide"><img src="2025_album/2025_15.jpg"></div>
+        </div>
+      </div>
+
+      <div class="dots" data-dots="0"></div>
+    </div>
+    <br><br>
+    <h2>2024 Symposium</h2>
+
+    <!-- Album 2 -->
+    <div class="card mt-20">
+
+      <div class="carousel" data-carousel="1">
+        <div class="carousel-track">
+          <div class="slide"><img src="2024_album/2024_flyer.PNG"></div>
+          <div class="slide"><img src="2024_album/2024_1.jpg"></div>
+          <div class="slide"><img src="2024_album/2024_2.jpeg"></div>
+          <div class="slide"><img src="2024_album/2024_3.jpg"></div>
+          <div class="slide"><img src="2024_album/2024_4.jpg"></div>
+          <div class="slide"><img src="2024_album/2024_5.jpg"></div>
+          <div class="slide"><img src="2024_album/2024_6.jpg"></div>
+          <div class="slide"><img src="2024_album/2024_7.jpg"></div>
+          <div class="slide"><img src="2024_album/2024_8.jpg"></div>
+        </div>
+      </div>
+
+      <div class="dots" data-dots="1"></div>
+    </div>
+
+  </section>
+
+  <!-- TESTIMONIAL VIDEO -->
+  <section>
+
+    <h2>Participant Testimonials</h2>
+
+    <div class="card mt-20">
+
+      <div class="testimonial-video">
+
+        <video controls playsinline preload="metadata">
+          <source src="videos/Testimonials.mov" type="video/mp4">
+        </video>
+
+      </div>
+
+      <p style="margin-top:18px;">
+        Hear reflections from symposium participants about mentorship,
+        collaboration, and artistic community.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- PRESS RELEASES -->
+  <section>
+
+    <h2>Press Releases</h2>
+
+    <div class="card mt-20">
+
+      <h3>Featured Article</h3>
+
+
+      <div class="press-thumbnail"
+        onclick="openPDF('pdf/press_release.pdf')">
+
+        <img src="pdf/press_thumb.jpg" alt="Press Release Thumbnail">
+
+        <div class="zoom-indicator">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+
+      </div>
+      <br>
+
+      <h3>A Space to Belong: The Symposium for Women and Non-Binary Bassists</h3>
+      <p style="margin-top:18px; margin-bottom: 18px;">
+
+        <a href="#" onclick="openPDF('pdf/press_release.pdf')" style="color:white;">
+          Click to read the full press release and article coverage.
+        </a>
+      </p>
+      <a href="https://www.isbworldoffice.com/bass-world.asp" style="color: white;">Link to Article - Bass World</a>
+
+    </div>
+
+  </section>
+
+  <!-- OTHER SECTIONS (UNCHANGED) -->
+  <section>
+    <h2>Sponsor the Symposium</h2>
+    <div class="card">
+      <p>Support women and non-binary bassists through education and performance opportunities.</p>
+      <a href="sponsor.html" class="btn">Sponsorship Opportunities</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Get Involved</h2>
+
+    <div class="card">
+      <p>
+        We welcome musicians, collaborators, and supporters from all backgrounds.
+        If you’re interested in participating or getting in touch, we’d love to hear from you.
+      </p>
+
+      <a href="contact.html" class="btn">Contact Us</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Hanxiao Deng. All Rights Reserved.</p>
+  </footer>
+
+  <!-- PDF MODAL -->
+  <div id="pdfModal" class="lightbox">
+
+    <div class="lightbox-close" onclick="closePDF()">
+      <i class="fa-solid fa-xmark"></i>
+    </div>
+
+    <iframe
+    id="pdfFrame"
+    style="
+      width:90vw;
+      height:90vh;
+      border:none;
+      border-radius:12px;
+      background:#fff;
+      ">
+    </iframe>
+
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+
+    <div class="lightbox-close" onclick="closeLightbox()">
+      <i class="fa-solid fa-xmark"></i>
+    </div>
+
+    <div class="lightbox-arrow lightbox-prev" onclick="changeLightbox(-1)">
+      <i class="fa-solid fa-chevron-left"></i>
+    </div>
+
+    <img id="lightboxImage" src="">
+
+    <div class="lightbox-arrow lightbox-next" onclick="changeLightbox(1)">
+      <i class="fa-solid fa-chevron-right"></i>
+    </div>
+
+  </div>
+
+  <script>
+
+  function openPDF(file){
+    document.getElementById("pdfFrame").src = file;
+    document.getElementById("pdfModal").classList.add("active");
+  }
+
+  function closePDF(){
+    document.getElementById("pdfModal").classList.remove("active");
+    document.getElementById("pdfFrame").src = "";
+  }
+
+  /* LIGHTBOX */
+  let currentGallery = [];
+  let currentImageIndex = 0;
+
+  function openLightbox(images,index){
+
+    currentGallery = images;
+    currentImageIndex = index;
+
+    document.getElementById("lightboxImage").src =
+      currentGallery[currentImageIndex];
+
+      document.getElementById("lightbox")
+      .classList.add("active");
+
+      /* SHOW/HIDE ARROWS */
+      const prev =
+      document.querySelector(".lightbox-prev");
+
+      const next =
+      document.querySelector(".lightbox-next");
+
+      if(currentGallery.length <= 1){
+
+        prev.style.display = "none";
+        next.style.display = "none";
+
+      } else {
+
+        prev.style.display = "flex";
+        next.style.display = "flex";
+
+      }
+    }
+
+    function closeLightbox(){
+      document.getElementById("lightbox")
+      .classList.remove("active");
+    }
+
+    function changeLightbox(direction){
+
+      currentImageIndex += direction;
+
+      if(currentImageIndex < 0){
+        currentImageIndex = currentGallery.length - 1;
+      }
+
+      if(currentImageIndex >= currentGallery.length){
+        currentImageIndex = 0;
+      }
+
+      document.getElementById("lightboxImage").src =
+      currentGallery[currentImageIndex];
+    }
+
+    /* AUTO CAROUSEL + THUMBNAILS */
+    function initCarousel(index){
+
+      const carousel =
+      document.querySelector(`[data-carousel="${index}"]`);
+
+      const track =
+      carousel.querySelector(".carousel-track");
+
+      const slides = track.children;
+
+      const dotsContainer =
+      document.querySelector(`[data-dots="${index}"]`);
+
+      let current = 0;
+
+      const galleryImages = [];
+
+      for(let i=0;i<slides.length;i++){
+
+        const img =
+        slides[i].querySelector("img");
+
+        galleryImages.push(img.src);
+
+        /* click slideshow image */
+        img.style.cursor = "pointer";
+
+        img.addEventListener("click",()=>{
+          openLightbox(galleryImages,i);
+        });
+
+        /* thumbnails */
+        const dot = document.createElement("div");
+        dot.classList.add("dot");
+
+        if(i===0){
+          dot.classList.add("active");
+        }
+
+        const thumb = document.createElement("img");
+        thumb.src = img.src;
+
+        dot.appendChild(thumb);
+
+        dot.addEventListener("click",()=>{
+          current = i;
+          update();
+        });
+
+        dotsContainer.appendChild(dot);
+      }
+
+      function update(){
+
+        track.style.transform =
+        `translateX(-${current*100}%)`;
+
+        dotsContainer
+        .querySelectorAll(".dot")
+        .forEach((d,i)=>{
+
+          d.classList.toggle(
+            "active",
+            i===current
+          );
+
+        });
+      }
+
+      setInterval(()=>{
+
+        current = (current+1)%slides.length;
+        update();
+
+      },4000);
+
+    }
+
+    function initProgramCarousel(){
+
+      const carousel =
+      document.querySelector('[data-carousel="2"]');
+
+      const track =
+      carousel.querySelector(".carousel-track");
+
+      const slides = track.children;
+
+      const dotsContainer =
+      document.querySelector('[data-dots="2"]');
+
+      const titles = [
+        "2026 Symposium Schedule",
+        "Thursday, May 28",
+        "Friday, May 29",
+        "Saturday, May 30",
+        "Sunday, May 31"
+      ];
+
+
+      let current = 0;
+
+      const galleryImages = [];
+
+      for(let i=0;i<slides.length;i++){
+
+        const img =
+        slides[i].querySelector("img");
+
+        galleryImages.push(img.src);
+
+        img.style.cursor = "pointer";
+
+        img.addEventListener("click",()=>{
+          openLightbox(galleryImages,i);
+        });
+
+        const dot = document.createElement("div");
+        dot.classList.add("dot");
+
+        if(i===0){
+          dot.classList.add("active");
+        }
+
+        const thumb = document.createElement("img");
+        thumb.src = img.src;
+
+        dot.appendChild(thumb);
+
+        dot.addEventListener("click",()=>{
+          current = i;
+          update();
+        });
+
+        dotsContainer.appendChild(dot);
+      }
+
+      function update(){
+
+        track.style.transform =
+        `translateX(-${current*100}%)`;
+
+        dotsContainer
+        .querySelectorAll(".dot")
+        .forEach((d,i)=>{
+
+          d.classList.toggle(
+            "active",
+            i===current
+          );
+        });
+
+        document.getElementById("programTitle").innerText =
+        titles[current];
+
+      }
+
+      setInterval(()=>{
+
+        current = (current+1)%slides.length;
+        update();
+
+      },4000);
+    }
+
+
+
+    initCarousel(0);
+    initCarousel(1);
+    initProgramCarousel();
+
+  </script>
+
+  </body>
+</html>
