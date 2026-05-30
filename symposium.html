@@ -213,6 +213,78 @@
       object-fit:contain;
     }
 
+    /* HOSTED AT CARD */
+    .youtube-card{
+  margin:40px auto 0;
+  max-width:700px;
+  background:linear-gradient(145deg,#1c1c1c,#111);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:24px;
+  padding:30px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  gap:15px;
+  text-decoration:none;
+  color:white;
+  transition:0.35s ease;
+}
+
+
+    .youtube-card:hover{
+      transform:translateY(-6px);
+      border-color:rgba(255,255,255,0.18);
+      background:linear-gradient(145deg,#232323,#151515);
+    }
+    .youtube-info{
+      text-align:center;
+    }
+
+    .youtube-info h3{
+      font-size:1.4rem;
+      margin-bottom:8px;
+    }
+
+    .youtube-info p{
+      opacity:0.7;
+    }
+
+    .youtube-logo{
+      margin-left:0;
+      width:52px;
+      height:52px;
+      border-radius:50%;
+      background:linear-gradient(
+        135deg,
+        var(--accent),
+        var(--accent2)
+      );
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.3rem;
+      font-weight:bold;
+      flex-shrink:0;
+      transition:0.3s ease;
+    }
+
+    .youtube-card:hover .youtube-logo{
+      transform:scale(1.08);
+    }
+
+    @media(max-width:700px){
+      .youtube-card{
+        flex-direction:column;
+        text-align:center;
+        padding:25px;
+      }
+
+      .youtube-logo{
+        margin-left:0;
+      }
+    }
     /* HIGHLIGHTS CAROUSEL */
     .carousel{
       position:relative;
@@ -442,7 +514,7 @@
       <div class="menu">
         <a href="index.html">Home</a>
         <a href="index.html#contact">Connect</a>
-        <a href="symposium.html" class="symposium-link">Symposium</a>
+        <a href="symposium.html#programView" class="symposium-link">Schedule</a>
       </div>
     </nav>
 
@@ -466,8 +538,25 @@
 
     </div>
 
+    <section id="hosted-by">
+      <h2>Hosted At</h2>
+
+      <a href="https://www.curtis.edu/event/symposium-for-women-non-binary-bassists-2026/" target="_blank" class="youtube-card">
+
+        <div class="youtube-info">
+          <h3>Curtis Institute of Music</h3>
+          <p>Click here to visit the official symposium listing</p>
+        </div>
+
+        <div class="youtube-logo">
+          ↗
+        </div>
+
+      </a>
+    </section>
+
     <!-- PROGRAM (UNCHANGED) -->
-    <section>
+    <section id="programView">
 
       <h2>Program Overview</h2>
 
