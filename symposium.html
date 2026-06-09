@@ -569,7 +569,7 @@
 
         <h3 id="programTitle">Symposium Schedule - 2026</h3>
         <br>
-        <div class="carousel" data-carousel="2">
+        <div class="carousel" data-carousel="3">
 
           <div class="carousel-track">
 
@@ -595,7 +595,7 @@
           </div>
         </div>
 
-        <div class="dots" data-dots="2"></div>
+        <div class="dots" data-dots="3"></div>
 
       </div>
 
@@ -605,12 +605,45 @@
   <section>
     <h2>Symposium Archives</h2>
     <br>
-    <h2>2025 Symposium</h2>
+    <h2>2026 Symposium</h2>
 
     <!-- Album 1 -->
     <div class="card">
 
       <div class="carousel" data-carousel="0">
+        <div class="carousel-track">
+          <div class="slide"><img src="photos/2026_Symposium_Flyer.jpg"></div>
+          <div class="slide"><img src="2026_album/FullSizeRender_a.jpeg"></div>
+          <div class="slide"><img src="2026_album/FullSizeRender.jpeg"></div>
+          <div class="slide"><img src="2026_album/IMG_0334.jpg"></div>
+          <div class="slide"><img src="2026_album/IMG_0336.jpg"></div>
+          <div class="slide"><img src="2026_album/IMG_0338.jpg"></div>
+          <div class="slide"><img src="2026_album/IMG_0342.jpg"></div>
+          <div class="slide"><img src="2026_album/IMG_0354.jpg"></div>
+          <div class="slide"><img src="2026_album/IMG_0355.jpg"></div>
+          <div class="slide"><img src="2026_album/IMG_0356.jpg"></div>
+          <div class="slide"><img src="2026_album/IMG_0362.jpg"></div>
+          <div class="slide"><img src="2026_album/IMG_0364.jpg"></div>
+          <div class="slide"><img src="2026_album/IMG_0374.jpg"></div>
+          <div class="slide"><img src="2026_album/IMG_1893.jpeg"></div>
+          <div class="slide"><img src="2026_album/IMG_1964.jpeg"></div>
+          <div class="slide"><img src="2026_album/IMG_1968.jpeg"></div>
+          <div class="slide"><img src="2026_album/IMG_2004.jpeg"></div>
+          <div class="slide"><img src="2026_album/IMG_2008.jpeg"></div>
+          <div class="slide"><img src="2026_album/IMG_2017.jpeg"></div>
+          <div class="slide"><img src="2026_album/IMG_2039.jpeg"></div>
+        </div>
+      </div>
+
+      <div class="dots" data-dots="0"></div>
+    </div>
+    <br><br>
+    <h2>2025 Symposium</h2>
+
+    <!-- Album 1 -->
+    <div class="card">
+
+      <div class="carousel" data-carousel="1">
         <div class="carousel-track">
           <div class="slide"><img src="2025_album/2025_flyer.PNG"></div>
           <div class="slide"><img src="2025_album/2025_1.jpeg"></div>
@@ -631,7 +664,7 @@
         </div>
       </div>
 
-      <div class="dots" data-dots="0"></div>
+      <div class="dots" data-dots="1"></div>
     </div>
     <br><br>
     <h2>2024 Symposium</h2>
@@ -639,7 +672,7 @@
     <!-- Album 2 -->
     <div class="card mt-20">
 
-      <div class="carousel" data-carousel="1">
+      <div class="carousel" data-carousel="2">
         <div class="carousel-track">
           <div class="slide"><img src="2024_album/2024_flyer.PNG"></div>
           <div class="slide"><img src="2024_album/2024_1.jpeg"></div>
@@ -653,7 +686,7 @@
         </div>
       </div>
 
-      <div class="dots" data-dots="1"></div>
+      <div class="dots" data-dots="2"></div>
     </div>
 
   </section>
@@ -933,7 +966,7 @@
     function initProgramCarousel(){
 
       const carousel =
-      document.querySelector('[data-carousel="2"]');
+      document.querySelector('[data-carousel="3"]');
 
       const track =
       carousel.querySelector(".carousel-track");
@@ -941,7 +974,7 @@
       const slides = track.children;
 
       const dotsContainer =
-      document.querySelector('[data-dots="2"]');
+      document.querySelector('[data-dots="3"]');
 
       const titles = [
         "2026 Symposium Schedule",
@@ -1019,9 +1052,10 @@
 
 
 
-    initCarousel(0);
-    initCarousel(1);
-    initProgramCarousel();
+    initCarousel(0); // 2026 gallery
+    initCarousel(1); // 2025 gallery
+    initCarousel(2); // 2024 gallery
+    initProgramCarousel(); // schedule slideshow
 
   </script>
 
