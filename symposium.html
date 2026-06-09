@@ -502,6 +502,64 @@
       border-radius:10px;
     }
 
+    .testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.video-card {
+  background: linear-gradient(145deg, var(--card), var(--card2));
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 14px;
+  text-align: center;
+  transition: 0.25s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.18);
+}
+
+.video-card video {
+  width: 100%;
+  border-radius: 12px;
+  background: #000;
+}
+
+.video-card p {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+/* make featured video slightly larger */
+.featured-video {
+  grid-column: span 2;
+}
+
+/* responsive */
+@media (max-width: 700px) {
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-video {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-video {
+    grid-column: span 1;
+  }
+}
     </style>
   </head>
 
@@ -693,27 +751,65 @@
 
   <!-- TESTIMONIAL VIDEO -->
   <section>
+  <h2>Participant Testimonials</h2>
 
-    <h2>Participant Testimonials</h2>
+  <div class="card mt-20">
 
-    <div class="card mt-20">
+    <div class="testimonial-grid">
 
-      <div class="testimonial-video">
+      <div class="video-card">
+        <video controls playsinline preload="metadata">
+          <source src="https://hanxiaodeng-media.s3.us-east-2.amazonaws.com/2026_Testimonial_a.mp4" type="video/mp4">
+        </video>
+        <p>2026 Participant Reflection</p>
+      </div>
 
+      <div class="video-card">
+        <video controls playsinline preload="metadata">
+          <source src="https://hanxiaodeng-media.s3.us-east-2.amazonaws.com/2026_Testimonial_b.mp4" type="video/mp4">
+        </video>
+        <p>2026 Participant Reflection</p>
+      </div>
+
+      <div class="video-card">
+        <video controls playsinline preload="metadata">
+          <source src="https://hanxiaodeng-media.s3.us-east-2.amazonaws.com/2026_Testimonial_c.mp4" type="video/mp4">
+        </video>
+        <p>2026 Participant Reflection</p>
+      </div>
+
+      <div class="video-card">
+        <video controls playsinline preload="metadata">
+          <source src="https://hanxiaodeng-media.s3.us-east-2.amazonaws.com/2026_Testimonial_d.mp4" type="video/mp4">
+        </video>
+        <p>2026 Participant Reflection</p>
+      </div>
+
+      <div class="video-card">
+        <video controls playsinline preload="metadata">
+          <source src="https://hanxiaodeng-media.s3.us-east-2.amazonaws.com/2026_Testimonial_e.mp4" type="video/mp4">
+        </video>
+        <p>2026 Participant Reflection</p>
+      </div>
+
+      <div class="video-card">
+        <video controls playsinline preload="metadata">
+          <source src="https://hanxiaodeng-media.s3.us-east-2.amazonaws.com/2026_Testimonial_f.mp4" type="video/mp4">
+        </video>
+        <p>2026 Participant Reflection</p>
+      </div>
+
+      <div class="video-card">
         <video controls playsinline preload="metadata">
           <source src="https://hanxiaodeng-media.s3.amazonaws.com/Testimonials.mp4" type="video/mp4">
         </video>
-
+        <p>2025 Testimonial Compilation</p>
       </div>
-
-      <p style="margin-top:18px;">
-        Hear reflections from symposium participants about mentorship,
-        collaboration, and artistic community.
-      </p>
 
     </div>
 
-  </section>
+  </div>
+</section>
 
   <!-- PRESS RELEASES -->
   <section>
