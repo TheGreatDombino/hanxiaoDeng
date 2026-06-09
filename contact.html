@@ -76,17 +76,16 @@
       text-align: center;
     }
 
-    h2 {
-      font-size: clamp(1.5rem, 4vw, 2.2rem);
+    main {
+      flex: 1;
+      padding-top: 120px;
     }
 
     form {
-      max-width: 500px;
-      margin: auto;
       display: flex;
       flex-direction: column;
       gap: 15px;
-      margin-bottom: 80px; /* keeps spacing above footer */
+      width: 100%;
     }
 
     input, select, textarea {
@@ -112,35 +111,106 @@
       opacity: 0.7;
     }
 
-    /* FLEX LAYOUT FIX */
-    main {
-      flex: 1;
-      padding-top: 120px;
+    /* NAV MOBILE */
+    @media (max-width: 768px) {
+      .menu {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: #111;
+        flex-direction: column;
+        width: 200px;
+        padding: 20px;
+        display: none;
+      }
+
+      .menu.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
     }
 
-  /* MOBILE */
-  @media (max-width: 768px) {
-    .menu {
-      position: absolute;
-      top: 60px;
-      right: 0;
+    /* =========================
+       CONTACT LAYOUT (NEW)
+    ========================= */
+
+    .contact-layout {
+      width: 100%;
+      max-width: 1400px;
+      margin: 60px auto 100px;
+      padding: 0 60px;
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) minmax(420px, 560px) minmax(220px, 1fr);
+      gap: 70px;
+      align-items: start;
+    }
+
+    .side-image {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
       background: #111;
-      flex-direction: column;
-      width: 200px;
-      padding: 20px;
-      display: none;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+      transition: 0.3s ease;
     }
 
-    .menu.active {
-      display: flex;
+    .side-image:hover {
+      transform: translateY(-4px);
     }
 
-    .menu-toggle {
+    .side-image img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
       display: block;
     }
-  }
 
-  </style>
+    .side-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.35),
+        rgba(0,0,0,0.05)
+      );
+      pointer-events: none;
+    }
+
+    .photo-label {
+      position: absolute;
+      bottom: 12px;
+      left: 14px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
+      z-index: 2;
+    }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+
+      form {
+        order: 1;
+      }
+
+      .side-image {
+        order: 2;
+      }
+
+      .side-image img {
+        height: 280px;
+      }
+    }
+
+    </style>
   </head>
 
   <body>
@@ -163,40 +233,58 @@
 
     <main>
 
-      <h1 style="text-align:center;">Contact</h1>
+      <h1>Contact</h1>
 
-      <form action="https://formspree.io/f/xpqonnpj" method="POST">
+      <div class="contact-layout">
 
-        <input type="text" name="name" placeholder="Your Name" required>
+        <!-- LEFT IMAGE -->
+        <div class="side-image">
+          <img src="photos/hanxiaoPiano.JPG" alt="Hanxiao Deng playing piano">
+        </div>
 
-        <input type="email" name="email" placeholder="Your Email" required>
+        <!-- FORM -->
+        <form action="https://formspree.io/f/xpqonnpj" method="POST">
 
-        <select name="reason" required>
-          <option value="">Reason for Contact</option>
-          <option>Sponsor Symposium</option>
-          <option>Participate in Symposium</option>
-          <option>Lessons with Hanxiao</option>
-          <option>Mailing List Signup</option>
-          <option>Booking / Performance Inquiry</option>
-          <option>Collaboration</option>
-          <option>Press / Media</option>
-          <option>Other...</option>
-        </select>
+          <input type="text" name="name" placeholder="Your Name" required>
 
-        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+          <input type="email" name="email" placeholder="Your Email" required>
 
-        <button type="submit">Send Message</button>
-      </form>
+          <select name="reason" required>
+            <option value="">Reason for Contact</option>
+            <option>Sponsor Symposium</option>
+            <option>Participate in Symposium</option>
+            <option>Lessons with Hanxiao</option>
+            <option>Mailing List Signup</option>
+            <option>Booking / Performance Inquiry</option>
+            <option>Collaboration</option>
+            <option>Press / Media</option>
+            <option>Other...</option>
+          </select>
+
+          <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+
+          <button type="submit">Send Message</button>
+
+        </form>
+
+        <!-- RIGHT IMAGE -->
+        <div class="side-image">
+          <img src="photos/HanxiaoBass.jpg" alt="Hanxiao Deng playing bass">
+        </div>
+
+      </div>
 
     </main>
 
     <footer>
       <p>© 2026 Hanxiao Deng. All Rights Reserved.</p>
     </footer>
+
     <script>
-    function toggleMenu() {
-      document.getElementById("menu").classList.toggle("active");
-    }
-  </script>
+      function toggleMenu() {
+        document.getElementById("menu").classList.toggle("active");
+      }
+    </script>
+
   </body>
 </html>
